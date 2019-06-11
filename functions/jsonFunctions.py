@@ -5,7 +5,10 @@ import numpy
 
 def objectDataToDico(object) :
     verts = []
-    mesh = object.copy().to_mesh(bpy.context.scene, True, 'PREVIEW')
+    depsgraph = bpy.context.evaluated_depsgraph_get()
+    mesh = object.evaluated_get(depsgraph).to_mesh()
+    # mesh = object.copy().to_mesh(bpy.context.scene, True, 'PREVIEW')
+
     for v in mesh.vertices:
         verts.append(tuple(numpy.array(tuple(v.co))*(object.scale[0],object.scale[1],object.scale[2])))
         #verts.append(tuple(v.co))

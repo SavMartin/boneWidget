@@ -67,7 +67,7 @@ def createWidget(bone, widget, relative, size, scale, slide, collection):
     collection.objects.link(newObject)
     newObject.matrix_world = bone.id_data.matrix_world @ matrixBone.bone.matrix_local
     #newObject.scale = [matrixBone.bone.length,matrixBone.bone.length,matrixBone.bone.length]
-    C.scene.update()
+    C.view_layer.update()
 
     bone.custom_shape = newObject
     bone.bone.show_wire = True
